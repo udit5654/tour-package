@@ -103,16 +103,38 @@ Join us and let’s explore the unexplored—because the best stories are found 
     <footer>
         &copy; 2025 Meghalaya Explorers. All rights reserved.
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+    (function() {
+        emailjs.init("xprZkAUWWhf4oxyMc"); // Replace with your actual Public Key from EmailJS
+    })();
+</script>
 
     <script>
-        function bookNow() {
-            const name = prompt("Enter your name to confirm booking:");
-            if (name !== null && name.trim() !== "") {
-                alert("Thank you " + name.trim() + "! Our team will contact you soon.");
-            } else {
-                alert("Booking cancelled.");
-            }
+    function bookNow() {
+        const name = prompt("Enter your name to confirm booking:");
+        if (!name || name.trim() === "") {
+            alert("Booking cancelled.");
+            return;
         }
+
+        const phone = prompt("Enter your phone number:");
+        if (!phone || phone.trim() === "") {
+            alert("Booking cancelled. Phone number is required.");
+            return;
+        }
+
+        emailjs.send("service_jk0h7y9", "template_ah903gi", {  // Replace with your real IDs
+            user_name: name,
+            user_phone: phone,
+            package_name: "Meghalaya Adventure Tour 3N/4D"
+        })
+        .then(function(response) {
+            alert("Thank you " + name + "! Your booking has been received. We will contact you soon.");
+        }, function(error) {
+            alert("Booking failed. Please try again later.");
+        });
+    }
 
         function whatsappContact() {
             const url = 'https://wa.me/919365383393?text=' + encodeURIComponent('I am interested in the Meghalaya Adventure Tour');
