@@ -41,24 +41,25 @@
         <p><strong>Date:</strong> 26 July - 30 July 2025</p>
         <h3>Itinerary:</h3>
         <ul>
-            <li><b>Day 1:</b> Arrival at Shillong, local sightseeing & local cuisine tasting</li>
-            <li><b>Day 2:</b> Trek to hidden waterfalls, camping under the stars</li>
-            <li><b>Day 3:</b> Adventure sports activities (zipline, kayaking)</li>
-            <li><b>Day 4:</b> Visit Mawlynnong (Asia's cleanest village), return to Shillong</li>
+            <li><b>Day 1:</b> Day 1: Guwahati to Shillong (Umiam Lake, Police Bazaar, Baptist Church)</li>
+            <li><b>Day 2:</b> Day 2: Shillong Sightseeing (Shillong Peak, Laitlum, Ward Lake)</li>
+            <li><b>Day 3:</b>Day 2: Shillong Sightseeing (Shillong Peak, Laitlum, Ward Lake)</li>
+            <li><b>Day 4:</b> Cherrapunji to Guwahati (Optional: Don Bosco Museum or Elephant Falls)</li>
         </ul>
         <h3>Inclusions:</h3>
         <ul>
             <li>Accommodation (camp & hotel)</li>
-            <li>All meals</li>
+            <li>Meals: Breakfast & Dinner</li>
             <li>Local guide</li>
-            <li>Adventure sports fees</li>
+            <li>AC Traveller</li>
+            <li>Adventure sports (at your own expenses)</li>
         </ul>
         <h3>Exclusions:</h3>
         <ul>
-            <li>Travel to Shillong (arrival/departure)</li>
+            <li>Lunch</li>
             <li>Personal expenses</li>
         </ul>
-        <p><strong>Price:</strong> ₹9,999 per person</p>
+        <p><strong>Price:</strong> ₹5999per person</p>
         <button class="btn" onclick="bookNow()">Book Now</button>
     </div>
 
@@ -118,11 +119,14 @@ Join us and let’s explore the unexplored—because the best stories are found 
             return;
         }
 
-        const phone = prompt("Enter your phone number:");
-        if (!phone || phone.trim() === "") {
-            alert("Booking cancelled. Phone number is required.");
+         const phone = prompt("Enter your 10-digit phone number:");
+        const phonePattern = /^[0-9]{10}$/; // Regex for exactly 10 digits
+
+        if (!phone || !phonePattern.test(phone)) {
+            alert("Booking cancelled. Please enter a valid 10-digit phone number.");
             return;
         }
+
 
         emailjs.send("service_jk0h7y9", "template_ah903gi", {  // Replace with your real IDs
             user_name: name,
